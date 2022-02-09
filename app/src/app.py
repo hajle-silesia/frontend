@@ -1,12 +1,22 @@
-from flask import Flask
-
-app = Flask(__name__)
-
-
-@app.route("/")
-def hello_world():
-    return "hello Docker!"
+import tkinter as tk
+import os
+import requests
 
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+def check():
+    host = os.getenv('RECIPE_ADAPTER_SERVICE_SERVICE_HOST')
+    port = os.getenv('RECIPE_ADAPTER_SERVICE_SERVICE_PORT')
+    response = requests.get(f"http://{host}:{port}")
+    # print(f"response: {response.status_code}, {response.json()}")
+    tk.Label(root_window, text=response.json()).pack()
+
+
+root_window = tk.Tk()
+
+root_window.title("Test application")
+root_window.geometry("300x100")
+
+tk.Button(root_window, text="send", width=10, command=check).pack()
+tk.Button(root_window, text='Exit', width=10, command=root_window.destroy).pack()
+
+root_window.mainloop()
