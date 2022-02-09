@@ -1,4 +1,6 @@
 FROM python:3.9-slim
+RUN apt-get update && apt-get install python-tk -y
+ENV DISPLAY host.docker.internal:0
 WORKDIR app
 RUN mkdir src
 COPY requirements.txt .
