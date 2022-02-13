@@ -4,8 +4,8 @@ import requests
 
 
 def check():
-    host = os.getenv('RECIPE_ADAPTER_SERVICE_SERVICE_HOST')
-    port = os.getenv('RECIPE_ADAPTER_SERVICE_SERVICE_PORT')
+    host = os.getenv('RECIPE_ADAPTER_SERVICE_HOST')
+    port = os.getenv('RECIPE_ADAPTER_SERVICE_PORT')
     response = requests.get(f"http://{host}:{port}")
     # print(f"response: {response.status_code}, {response.json()}")
     tk.Label(root_window, text=response.json()).pack()

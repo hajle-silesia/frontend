@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gui-deployment
+  name: gui
   labels:
     app: gui
 spec:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: gui-service
+  name: gui
 spec:
   selector:
     app: gui
