@@ -2,15 +2,24 @@ from tkinter import *
 
 
 class ApplicationWindow(Tk):
-    def __init__(self):
-        self.__name = "Hajle Silesia Homebrewing System"
-        self.__icon_path = "./img/icon.png"
+    __name = "Hajle Silesia Homebrewing System"
 
+    def __init__(self):
         super().__init__()
 
-        self.__set_window()
+        self.__icon_path = "./img/icon.png"
 
-    def __set_window(self):
+        self._set_component()
+
+    @property
+    def name(self):
+        return self.__name
+
+    def position_component(self):
+        for component in self.winfo_children():
+            component.position_component()
+
+    def _set_component(self):
         self.__set_titlebar_icon()
         self.__set_title()
         self.__set_size()
