@@ -1,34 +1,23 @@
 from tkinter import *
 from tkinter.ttk import Frame
 
-
-class Tab(Frame):
-    __name = "Tab"
-
-    def __init__(self, parent):
-        super().__init__(parent)
-
-    @property
-    def name(self):
-        return self.__name
-
-    def position_component(self):
-        for component in self.winfo_children():
-            component.position_component()
+from composite import Composite
 
 
-class Container(Frame):
-    __name = "Container"
+class Tab(Frame, Composite):
+    _name = "Tab"
 
     def __init__(self, parent):
         super().__init__(parent)
 
-    @property
-    def name(self):
-        return self.__name
+
+class Container(Frame, Composite):
+    _name = "Container"
+
+    def __init__(self, parent):
+        super().__init__(parent)
 
     def position_component(self):
-        for component in self.winfo_children():
-            component.position_component()
+        super().position_component()
 
         self.grid()
