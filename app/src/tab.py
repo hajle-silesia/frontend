@@ -18,12 +18,11 @@ class Container(Frame, Composite):
         Frame.__init__(self, parent)
         Composite.__init__(self, config)
 
-        self.__config = config
-
     def position(self):
         super().position()
 
-        self.grid(row=self.__config['row'], column=self.__config['column'], sticky=self.__config['sticky'])
+        self.grid(row=self._row, column=self._column, rowspan=self._rowspan, columnspan=self._columnspan,
+                  sticky=self._sticky)
 
     def _initialize(self, config):
         super()._initialize(config)

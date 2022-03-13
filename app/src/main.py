@@ -17,12 +17,12 @@ parameters = Container(recipe, config['parameters'])
 mash_steps = Container(recipe, config['mash_steps'])
 hops = Container(recipe, config['hops'])
 
-Title(user_settings)
-Title(miscs)
-Title(fermentables)
-Title(parameters)
-Title(mash_steps)
-Title(hops)
+Title(user_settings, config['title'])
+Title(miscs, config['title'])
+Title(fermentables, config['title'])
+Title(parameters, config['title'])
+Title(mash_steps, config['title'])
+Title(hops, config['title'])
 
 application_window.position()
 

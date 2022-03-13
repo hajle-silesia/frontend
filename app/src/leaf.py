@@ -5,14 +5,14 @@ from composite import Leaf
 
 
 class Title(Label, Leaf):
-    def __init__(self, parent, config={}):
+    def __init__(self, parent, config):
         self._parent = parent
 
         Label.__init__(self, parent)
         Leaf.__init__(self, config)
 
     def position(self):
-        self.grid(row=0)
+        self.grid(row=self._row, columnspan=self._columnspan)
 
     def _set_name(self, config):
         super()._set_name(config)
