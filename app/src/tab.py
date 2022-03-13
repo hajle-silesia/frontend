@@ -9,8 +9,8 @@ class Tab(Frame, Composite):
         Frame.__init__(self, parent)
         Composite.__init__(self, config)
 
-    def position_component(self):
-        super().position_component()
+    def position(self):
+        super().position()
 
 
 class Container(Frame, Composite):
@@ -20,11 +20,12 @@ class Container(Frame, Composite):
 
         self.__config = config
 
-    def position_component(self):
-        super().position_component()
+    def position(self):
+        super().position()
 
         self.grid(row=self.__config['row'], column=self.__config['column'], sticky=self.__config['sticky'])
 
-    def _set_component(self, config):
-        super()._set_component(config)
+    def _initialize(self, config):
+        super()._initialize(config)
+
         self.config(borderwidth=4, relief=SOLID)

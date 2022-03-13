@@ -9,8 +9,8 @@ class TabBar(Notebook, Composite):
         Notebook.__init__(self, parent)
         Composite.__init__(self, config)
 
-    def position_component(self):
-        super().position_component()
+    def position(self):
+        super().position()
 
         for component in self.winfo_children():
             self.add(component, text=component.name)

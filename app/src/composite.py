@@ -4,21 +4,22 @@ from abc import ABC, abstractmethod
 class Component(ABC):
     def __init__(self, config):
         self._name = None
-        self._set_component(config)
+
+        self._initialize(config)
 
     @property
     def name(self):
         return self._name
 
     @abstractmethod
-    def position_component(self):
+    def position(self):
         pass
 
     @abstractmethod
     def winfo_children(self):
         pass
 
-    def _set_component(self, config):
+    def _initialize(self, config):
         self._set_name(config)
 
     def _set_name(self, config):
@@ -30,9 +31,9 @@ class Composite(Component):
     def __init__(self, config):
         Component.__init__(self, config)
 
-    def position_component(self):
+    def position(self):
         for component in self.winfo_children():
-            component.position_component()
+            component.position()
 
 
 class Leaf(Component):

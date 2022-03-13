@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 config = {'application_window': {'name': "Hajle Silesia Homebrewing System",
                                  'icon_path': "./img/icon.png"
                                  },

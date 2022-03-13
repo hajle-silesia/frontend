@@ -8,8 +8,8 @@ class ApplicationWindow(Tk, Composite):
         Tk.__init__(self)
         Composite.__init__(self, config)
 
-    def _set_component(self, config):
-        super()._set_component(config)
+    def _initialize(self, config):
+        super()._initialize(config)
 
         # self.__set_titlebar_icon()
         self.__set_title()
