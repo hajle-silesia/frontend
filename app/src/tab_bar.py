@@ -5,10 +5,9 @@ from composite import Composite
 
 
 class TabBar(Notebook, Composite):
-    _name = "TabBar"
-
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, parent, config):
+        Notebook.__init__(self, parent)
+        Composite.__init__(self, config)
 
     def position_component(self):
         super().position_component()
