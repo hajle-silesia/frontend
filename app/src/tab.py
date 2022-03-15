@@ -12,6 +12,16 @@ class Tab(Frame, Composite):
     def position(self):
         super().position()
 
+    def _arrange_rows(self):
+        if self._rows_quantity:
+            for i in range(1, self._rows_quantity):
+                self.rowconfigure(i, weight=1)
+
+    def _arrange_columns(self):
+        if self._columns_quantity:
+            for i in range(self._columns_quantity):
+                self.columnconfigure(i, weight=1, uniform='column')
+
 
 class Container(Frame, Composite):
     def __init__(self, parent, config):
@@ -28,3 +38,7 @@ class Container(Frame, Composite):
         super()._initialize(config)
 
         self.config(borderwidth=4, relief=SOLID)
+
+    def _arrange_columns(self):
+        for i in range(self._columns_quantity):
+            self.columnconfigure(i, weight=1)

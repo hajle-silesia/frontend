@@ -41,6 +41,6 @@ config = {'application_window': {'name': "Hajle Silesia Homebrewing System",
                    'sticky': NSEW,
                    },
           'title': {'row': 0,
-                    'columnspan': 1,
+                    'columnspan': 2,
                     },
           }

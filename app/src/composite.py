@@ -8,6 +8,8 @@ class Component(ABC):
         self._column = None
         self._rowspan = None
         self._columnspan = None
+        self._rows_quantity = None
+        self._columns_quantity = None
         self._sticky = None
 
         self._initialize(config)
@@ -22,6 +24,18 @@ class Component(ABC):
 
     @abstractmethod
     def winfo_children(self):
+        pass
+
+    @abstractmethod
+    def grid_size(self):
+        pass
+
+    @abstractmethod
+    def rowconfigure(self, index, cnf={}, **kw):
+        pass
+
+    @abstractmethod
+    def columnconfigure(self, index, cnf={}, **kw):
         pass
 
     def _initialize(self, config):
@@ -56,6 +70,18 @@ class Component(ABC):
         if 'sticky' in config:
             self._sticky = config['sticky']
 
+    def _set_rows_quantity(self):
+        self._rows_quantity = self.grid_size()[1]
+
+    def _set_columns_quantity(self):
+        self._columns_quantity = self.grid_size()[0]
+
+    def _arrange_rows(self):
+        pass
+
+    def _arrange_columns(self):
+        pass
+
 
 class Composite(Component):
     def __init__(self, config):
@@ -64,6 +90,11 @@ class Composite(Component):
     def position(self):
         for component in self.winfo_children():
             component.position()
+
+        self._set_rows_quantity()
+        self._set_columns_quantity()
+        self._arrange_rows()
+        self._arrange_columns()
 
 
 class Leaf(Component):
