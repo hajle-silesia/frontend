@@ -11,6 +11,8 @@ class Title(Label, Leaf):
         Label.__init__(self, parent)
         Leaf.__init__(self, config)
 
+        self.config(font=self._font)
+
     def position(self):
         self.grid(row=self._row, columnspan=self._columnspan)
 

@@ -42,5 +42,6 @@ config = {'application_window': {'name': "Hajle Silesia Homebrewing System",
                    },
           'title': {'row': 0,
                     'columnspan': 2,
+                    'font': "TkHeadingFont",
                     },
           }
