@@ -1,5 +1,5 @@
 FROM python:3.9-slim
-RUN apt-get update && apt-get install -y \
+RUN apt update && apt install -y \
     python-tk
 ENV DISPLAY host.docker.internal:0
 WORKDIR app
