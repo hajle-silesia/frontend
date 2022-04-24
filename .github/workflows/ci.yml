@@ -34,7 +34,7 @@ jobs:
     - name: Lint with bandit
       run: bandit -r .
     - name: Lint with pylint
-      run: pylint *.py
+      run: pylint .
 
   build:
     needs: test
