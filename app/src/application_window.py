@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Tk, PhotoImage
 import tkinter.font
 
 from composite import Composite

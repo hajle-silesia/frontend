@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import BOTH
 from tkinter.ttk import Notebook
 
 from composite import Composite

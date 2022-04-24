@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import SOLID
 from tkinter.ttk import Frame
 
 from composite import Composite

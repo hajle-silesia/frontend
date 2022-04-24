@@ -1,4 +1,3 @@
-from tkinter import *
 from tkinter.ttk import Label
 
 from composite import Leaf
