@@ -1,7 +1,7 @@
 from tkinter import BOTH
 from tkinter.ttk import Notebook
 
-from composite import Composite
+from src.composite import Composite
 
 
 class TabBar(Notebook, Composite):

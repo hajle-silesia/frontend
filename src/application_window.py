@@ -1,7 +1,7 @@
 from tkinter import Tk, PhotoImage
 import tkinter.font
 
-from composite import Composite
+from src.composite import Composite
 
 
 class ApplicationWindow(Tk, Composite):

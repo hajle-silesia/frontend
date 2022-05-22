@@ -1,6 +1,6 @@
 from tkinter.ttk import Label
 
-from composite import Leaf
+from src.composite import Leaf
 
 
 class Title(Label, Leaf):
