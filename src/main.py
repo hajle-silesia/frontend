@@ -1,8 +1,8 @@
-from application_window import ApplicationWindow
-from tab_bar import TabBar
-from tab import Tab, Container
-from leaf import Title
-from config import config
+from src.application_window import ApplicationWindow
+from src.tab_bar import TabBar
+from src.tab import Tab, Container
+from src.leaf import Title
+from src.config import config
 
 
 application_window = ApplicationWindow(config['application_window'])

@@ -1,7 +1,7 @@
 from tkinter import SOLID
 from tkinter.ttk import Frame
 
-from composite import Composite
+from src.composite import Composite
 
 
 class Tab(Frame, Composite):
