@@ -22,7 +22,7 @@ class ApplicationWindow(Tk, Composite):
             self.tk.call('wm', 'iconphoto', self._w, PhotoImage(file=config['icon_path']))
 
     def __set_title(self):
-        self.title(self._name)
+        self.title(self._title)
 
     def __set_size(self):
         self.attributes('-zoomed', True)

@@ -13,6 +13,6 @@ class TabBar(Notebook, Composite):
         super().position()
 
         for component in self.winfo_children():
-            self.add(component, text=component.name)
+            self.add(component, text=component.title)
 
         self.pack(fill=BOTH, expand=1)
