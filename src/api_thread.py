@@ -12,4 +12,4 @@ class APIThread(threading.Thread):
         self.start()
 
     def run(self):
-        uvicorn.run(app, host="0.0.0.0", port=5000)  # nosec
+        uvicorn.run(app, host="0.0.0.0", port=8000, proxy_headers=True)  # nosec
