@@ -14,7 +14,7 @@ class ApplicationWindow(Tk, Composite):
 
         # self.__set_titlebar_icon()
         self.__set_title()
-        # self.__set_size()
+        self.__set_size()
         self.__set_default_fonts()
 
     def __set_titlebar_icon(self, config):
@@ -25,7 +25,8 @@ class ApplicationWindow(Tk, Composite):
         self.title(self._title)
 
     def __set_size(self):
-        self.attributes('-zoomed', True)
+        max_width, max_height = self.maxsize()
+        self.geometry(f"{max_width}x{max_height}+0+0")
 
     def __set_default_fonts(self):
         default_font_size = tkinter.font.nametofont("TkDefaultFont").actual()['size']
