@@ -1,14 +1,13 @@
-from abc import abstractmethod
-from tkinter import *
-from tkinter.ttk import Frame
-from tkinter.ttk import Label
+import abc
+import tkinter
+import tkinter.ttk
 
 from src.composite import Composite, Leaf
 
 
-class Tab(Frame, Composite):
+class Tab(tkinter.ttk.Frame, Composite):
     def __init__(self, parent, config):
-        Frame.__init__(self, parent)
+        tkinter.ttk.Frame.__init__(self, parent)
         Composite.__init__(self, config)
 
         self.bind('<<MessageGenerated>>', lambda event: self.update_content())
@@ -30,9 +29,9 @@ class Tab(Frame, Composite):
                 self.columnconfigure(i, weight=1, uniform='column')
 
 
-class Container(Frame, Composite):
+class Container(tkinter.ttk.Frame, Composite):
     def __init__(self, parent, config):
-        Frame.__init__(self, parent)
+        tkinter.ttk.Frame.__init__(self, parent)
         Composite.__init__(self, config)
 
     def position(self):
@@ -47,7 +46,7 @@ class Container(Frame, Composite):
     def _initialize(self, config):
         super()._initialize(config)
 
-        self.config(borderwidth=1, relief=SOLID)
+        self.config(borderwidth=1, relief=tkinter.SOLID)
 
     def _arrange_rows(self):
         if self._rows_quantity:
@@ -89,18 +88,19 @@ class DataContainer(Container):
         for child in self.winfo_children():
             child.destroy()
 
-    @abstractmethod
+    @abc.abstractmethod
     def _get_columns_names(self, content):
         pass
 
     def __create_data_columns(self, columns_quantity):
-        self._data_columns = [DataColumn(self, {'row': 1, 'column': i, 'sticky': NW}) for i in range(columns_quantity)]
+        self._data_columns = [DataColumn(self, {'row': 1, 'column': i, 'sticky': tkinter.NW}) for i in
+                              range(columns_quantity)]
 
     def __add_columns_names_to_data_columns(self, columns_names):
         for container, column in zip(self._data_columns, columns_names):
             container.config(text=column)
 
-    @abstractmethod
+    @abc.abstractmethod
     def _add_content_to_data_columns(self, content):
         pass
 
@@ -140,9 +140,9 @@ class ParametersContainer(DataContainer):
                 self._add_text_to_data_column(v, data_column)
 
 
-class DataColumn(Label, Leaf):
+class DataColumn(tkinter.ttk.Label, Leaf):
     def __init__(self, parent, config):
-        Label.__init__(self, parent, justify=LEFT)
+        tkinter.ttk.Label.__init__(self, parent, justify=tkinter.LEFT)
         Leaf.__init__(self, config)
 
     def position(self):

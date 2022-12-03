@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
+import abc
 
 
-class Component(ABC):
+class Component(abc.ABC):
     def __init__(self, config):
         self._name = None
         self._title = None
@@ -34,26 +34,26 @@ class Component(ABC):
     def queue(self, queue):
         self._queue = queue
 
-    @abstractmethod
+    @abc.abstractmethod
     def position(self):
         pass
 
     def update_content(self, content=None):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def winfo_children(self):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def grid_size(self):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def rowconfigure(self, index, cnf={}, **kw):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def columnconfigure(self, index, cnf={}, **kw):
         pass
 

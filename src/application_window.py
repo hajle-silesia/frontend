@@ -1,12 +1,12 @@
-from tkinter import Tk, PhotoImage
+import tkinter
 import tkinter.font
 
 from src.composite import Composite
 
 
-class ApplicationWindow(Tk, Composite):
+class ApplicationWindow(tkinter.Tk, Composite):
     def __init__(self, config):
-        Tk.__init__(self)
+        tkinter.Tk.__init__(self)
         Composite.__init__(self, config)
 
     def _initialize(self, config):
@@ -19,7 +19,7 @@ class ApplicationWindow(Tk, Composite):
 
     def __set_titlebar_icon(self, config):
         if 'icon_path' in config:
-            self.tk.call('wm', 'iconphoto', self._w, PhotoImage(file=config['icon_path']))
+            self.tk.call('wm', 'iconphoto', self._w, tkinter.PhotoImage(file=config['icon_path']))
 
     def __set_title(self):
         self.title(self._title)

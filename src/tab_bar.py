@@ -1,12 +1,12 @@
-from tkinter import BOTH
-from tkinter.ttk import Notebook
+import tkinter
+import tkinter.ttk
 
 from src.composite import Composite
 
 
-class TabBar(Notebook, Composite):
+class TabBar(tkinter.ttk.Notebook, Composite):
     def __init__(self, parent, config):
-        Notebook.__init__(self, parent)
+        tkinter.ttk.Notebook.__init__(self, parent)
         Composite.__init__(self, config)
 
     def position(self):
@@ -15,4 +15,4 @@ class TabBar(Notebook, Composite):
         for component in self.winfo_children():
             self.add(component, text=component.title)
 
-        self.pack(fill=BOTH, expand=1)
+        self.pack(fill=tkinter.BOTH, expand=1)

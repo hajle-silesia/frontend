@@ -1,15 +1,15 @@
 import base64
 import json
 import os
-from queue import Queue
+import queue
 
+import fastapi
 import requests
-from fastapi import FastAPI, Request
 
 from src.events_handler import EventsHandler
 
-app = FastAPI()
-queue = Queue()
+app = fastapi.FastAPI()
+queue = queue.Queue()
 events_handler = EventsHandler(queue)
 
 notifier_host = os.getenv('FILE_CONTENT_PROCESSOR_SERVICE_HOST')
@@ -35,7 +35,7 @@ async def api():
 
 
 @app.post("/update")
-async def update(request: Request):
+async def update(request: fastapi.Request):
     request_body_json = base64.b64decode(await request.body()).decode()
     request_body = json.loads(request_body_json)
     events_handler.notify(request_body)

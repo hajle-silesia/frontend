@@ -1,14 +1,14 @@
-from tkinter import CENTER
-from tkinter.ttk import Label
+import tkinter
+import tkinter.ttk
 
 from src.composite import Leaf
 
 
-class Title(Label, Leaf):
+class Title(tkinter.ttk.Label, Leaf):
     def __init__(self, parent, config):
         self._parent = parent
 
-        Label.__init__(self, parent, anchor=CENTER)
+        tkinter.ttk.Label.__init__(self, parent, anchor=tkinter.CENTER)
         Leaf.__init__(self, config)
 
     def position(self):
