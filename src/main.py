@@ -1,5 +1,6 @@
 from src.api_thread import APIThread, queue, events_handler
 from src.application_window import ApplicationWindow
+from src.brewery_tab import BreweryTab, Canvas
 from src.config import config
 from src.leaf import Title
 from src.tab import Tab, Container, RecordsContainer, ParametersContainer
@@ -8,6 +9,8 @@ from src.tab_bar import TabBar
 application_window = ApplicationWindow(config['application_window'])
 
 tab_bar = TabBar(application_window, config['tab_bar'])
+
+brewery_tab = BreweryTab(tab_bar, config['brewery'])
 recipe_tab = Tab(tab_bar, config['recipe'])
 
 user_settings = Container(recipe_tab, config['user_settings'])
@@ -33,6 +36,8 @@ RecordsContainer(fermentables, config['records_and_parameters'])
 ParametersContainer(parameters, config['records_and_parameters'])
 RecordsContainer(mash_steps, config['records_and_parameters'])
 RecordsContainer(hops, config['records_and_parameters'])
+
+brewery_canvas = Canvas(brewery_tab, config['brewery_canvas'])
 
 application_window.position()
 
