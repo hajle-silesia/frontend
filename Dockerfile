@@ -1,6 +1,5 @@
-FROM python:3.10.5
-RUN apt update && apt install -y \
-    curl
+FROM python:3.11.2-slim-bullseye
+RUN apt update && apt upgrade -y
 ENV DISPLAY host.docker.internal:0
 WORKDIR project
 ENV PYTHONPATH "${PYTHONPATH}:/project"
