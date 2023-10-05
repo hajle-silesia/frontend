@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="./img/icon.png">
+</head>
+<body>
+<py-config>
+    packages = [
+    ]
+    [[fetch]]
+    files = [
+        "object_factory.py",
+        "container.py",
+        "./config/brewing_imgs_coords.csv",
+        "./config/table_config.json",
+        "menu.py",
+        "recipe.py",
+        "brewing.py",
+        "pythonapi.py",
+    ]
+    [splashscreen]
+        enabled = false
+</py-config>
+<py-script src="main.py"></py-script>
+</body>
+</html>

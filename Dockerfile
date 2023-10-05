@@ -1,10 +1,8 @@
-FROM python:3.10.5
+FROM nginx:1.23.3
 RUN apt update && apt install -y \
-    curl
-ENV DISPLAY host.docker.internal:0
-WORKDIR project
-ENV PYTHONPATH "${PYTHONPATH}:/project"
+    curl \
+    python3 \
+    python3-pip
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-COPY ./src ./src
-ENTRYPOINT ["python", "src/main.py"]
+COPY ./src /usr/share/nginx/html
