@@ -1,0 +1,93 @@
+body {
+background-color: #f0f0f0;
+font-size: 1.2vw;
+margin: 0;
+padding: 0;
+}
+.canvas {
+position: relative;
+width: 95%;
+left: 5%;
+}
+.background {
+position: relative;
+width:100%;
+}
+.canvas_item {
+position: absolute;
+width: 1.5%;
+-webkit-transform: translate(-50%, -50%);
+}
+.menu {
+display: flex;
+flex-direction: column;
+width: 5%;
+position: absolute;
+user-select: none;
+}
+
+.menu_item {
+width: 5vw;
+height: 5vw;
+position: relative;
+}
+
+.image {
+width: 100%;
+background-color: rgba(0, 0, 0, 1);
+}
+
+.overlay {
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+transition: .5s ease;
+background-color: #008CBA;
+}
+
+.menu_item:hover .overlay {
+opacity: 1;
+}
+
+.text {
+color: white;
+font-size: 0.8vw;
+position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+text-align: center;
+}
+#recipe_upload {
+display: none;
+}
+#label_recipe_upload {
+display: inline-block;
+background-color: #008CBA;
+color: white;
+padding: 0.5vw;
+}
+table, th, td {
+padding: 0.5vw;
+border: 1px solid black;
+border-collapse: collapse;
+vertical-align: top;
+}
+.outer {
+table-layout: fixed;
+width: 100%;
+}
+.outer .inner {
+table-layout: auto;
+border-style: none;
+width: 100%;
+}
+.outer .inner td {
+border-style: none;
+width: 100%;
+}
+.outer .inner th {
+border-style: none;
+}
