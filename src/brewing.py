@@ -43,4 +43,36 @@ def create_brewing():
                                                         })
         pyodide.ffi.wrappers.add_event_listener(canvas_item.element, "click", show)
 
+    HTML(
+        'video',
+        brewing_tab.element,
+        {
+            'id': 'video',
+            'class': "rotate-video",
+            'style_left': f"{50}%",
+            'style_top': f"{50}%",
+            'width': 640,
+            'height': 360,
+            'controls': True,
+            'autoplay': True,
+            'muted': True,
+        },
+    )
+    HTML(
+        'script',
+        brewing_tab.element,
+        {
+            'script': """if (flvjs.isSupported()) {
+            var videoElement = document.getElementById('video');
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: 'srs-server.default.svc.cluster.local:8080/live/livestream.flv'
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+        }""",
+        }
+    )
+
     js.document.getElementById("brewing").hidden = True
