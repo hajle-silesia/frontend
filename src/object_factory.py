@@ -28,6 +28,12 @@ class HTML:
             self._set_style_left(config)
             self._set_style_top(config)
             self._set_py_click(config)
+            self._set_controls(config)
+            self._set_width(config)
+            self._set_height(config)
+            self._set_autoplay(config)
+            self._set_muted(config)
+            self._set_script(config)
 
     def _set_id(self, config):
         if 'id' in config:
@@ -68,3 +74,27 @@ class HTML:
     def _set_py_click(self, config):
         if 'py_click' in config:
             self.element.setAttribute('py-click', config['py_click'])
+
+    def _set_controls(self, config):
+        if 'controls' in config:
+            self.element.controls = config['controls']
+
+    def _set_width(self, config):
+        if 'width' in config:
+            self.element.width = config['width']
+
+    def _set_height(self, config):
+        if 'height' in config:
+            self.element.height = config['height']
+
+    def _set_autoplay(self, config):
+        if 'autoplay' in config:
+            self.element.autoplay = config['autoplay']
+
+    def _set_muted(self, config):
+        if 'muted' in config:
+            self.element.muted = config['muted']
+
+    def _set_script(self, config):
+        if 'script' in config:
+            self.element.innerHTML = config['script']
