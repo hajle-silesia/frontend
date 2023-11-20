@@ -66,7 +66,7 @@ def create_brewing():
             var videoElement = document.getElementById('video');
             var flvPlayer = flvjs.createPlayer({
                 type: 'flv',
-                url: 'srs-server.default.svc.cluster.local:8080/live/livestream.flv'
+                url: 'http://srs-server.default.svc.cluster.local:8080/live/livestream.flv'
             });
             flvPlayer.attachMediaElement(videoElement);
             flvPlayer.load();
