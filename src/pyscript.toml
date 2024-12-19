@@ -1,10 +1,10 @@
 packages = []
 [files]
-"object_factory.py" = ""
-"container.py" = ""
-"config/brewing_imgs_coords.csv" = "./config/brewing_imgs_coords.csv"
-"config/table_config.json" = "./config/table_config.json"
-"menu.py" = ""
-"recipe.py" = ""
-"brewing.py" = ""
-"pythonapi.py" = ""
+"./object_factory.py" = ""
+"./container.py" = ""
+"./config/brewing_imgs_coords.csv" = "./config/brewing_imgs_coords.csv"
+"./config/table_config.json" = "./config/table_config.json"
+"./menu.py" = ""
+"./recipe.py" = ""
+"./brewing.py" = ""
+"./pythonapi.py" = ""
