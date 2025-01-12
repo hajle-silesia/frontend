@@ -27,7 +27,7 @@ class HTML:
             self._set_src(config)
             self._set_style_left(config)
             self._set_style_top(config)
-            self._set_py_click(config)
+            # self._set_py_click(config)
 
     def _set_id(self, config):
         if 'id' in config:
@@ -65,6 +65,6 @@ class HTML:
         if 'style_top' in config:
             self.element.style.top = config['style_top']
 
-    def _set_py_click(self, config):
-        if 'py_click' in config:
-            self.element.setAttribute('py-click', config['py_click'])
+    # def _set_py_click(self, config):
+    #     if 'py_click' in config:
+    #         self.element.setAttribute('py-click', config['py_click'])

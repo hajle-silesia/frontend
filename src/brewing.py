@@ -39,7 +39,6 @@ def create_brewing():
                                                         'src': f"./img/{img_coords['name']}.png",
                                                         'style_left': f"{100 * float(img_coords['x'])}%",
                                                         'style_top': f"{100 * float(img_coords['y'])}%",
-                                                        'py_click': "show()",
                                                         })
         pyodide.ffi.wrappers.add_event_listener(canvas_item.element, "click", show)
 
