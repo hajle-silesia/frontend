@@ -24,8 +24,8 @@ def create_menu():
         item = HTML('div', menu_container.element, {'class': "menu_item"})
         image = HTML('img', item.element, {'class': "image", 'src': f"./img/{tab}.png"})
         overlay = HTML('div', item.element,
-                       {'id': f"{tab}_tab_overlay", 'class': "overlay", 'py_click': "activate_tab()"})
+                       {'id': f"{tab}_tab_overlay", 'class': "overlay"})
         text = HTML('div', overlay.element,
-                    {'id': f"{tab}_tab_text", 'class': "text", 'inner_html': tab.title(), 'py_click': "activate_tab()"})
+                    {'id': f"{tab}_tab_text", 'class': "text", 'inner_html': tab.title()})
         pyodide.ffi.wrappers.add_event_listener(overlay.element, "click", activate_tab)
         pyodide.ffi.wrappers.add_event_listener(text.element, "click", activate_tab)
