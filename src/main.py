@@ -1,8 +1,8 @@
 import js
 import asyncio
 
-from brewing import create_brewing, show
-from menu import create_menu, activate_tab
+from brewing import create_brewing
+from menu import create_menu
 from recipe import create_recipe
 
 
@@ -14,5 +14,5 @@ async def main():
     create_brewing()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.gather(main())
