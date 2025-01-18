@@ -4,7 +4,7 @@ import js
 import pyodide.ffi.wrappers
 import pyodide.http
 
-from api import upload_raw_file_content, download_file_content
+from pythonapi import upload_raw_file_content, download_file_content
 from container import RecordsContainer, ParametersContainer
 from object_factory import HTML
 
