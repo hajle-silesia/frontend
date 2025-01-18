@@ -1,4 +1,5 @@
 import js
+import events
 
 
 class HTML:
@@ -25,46 +26,91 @@ class HTML:
             self._set_type(config)
             self._set_html_for(config)
             self._set_src(config)
+            self._set_alt(config)
             self._set_style_left(config)
             self._set_style_top(config)
-            # self._set_py_click(config)
+            self._set_hidden(config)
+            self._set_controls(config)
+            self._set_width(config)
+            self._set_height(config)
+            self._set_autoplay(config)
+            self._set_muted(config)
+            self._set_script(config)
+            self._set_event(config)
 
     def _set_id(self, config):
-        if 'id' in config:
-            self.element.id = config['id']
+        if "id" in config:
+            self.element.id = config["id"]
 
     def _set_class(self, config):
-        if 'class' in config:
-            self.element.classList.add(config['class'])
+        if "class" in config:
+            self.element.classList.add(config["class"])
 
     def _set_inner_html(self, config):
-        if 'inner_html' in config:
-            self.element.innerHTML = config['inner_html']
+        if "inner_html" in config:
+            self.element.innerHTML = config["inner_html"]
 
     def _set_rowspan(self, config):
-        if 'rowspan' in config:
+        if "rowspan" in config:
             self.element.rowSpan = f"{config['rowspan']}"
 
     def _set_type(self, config):
-        if 'type' in config:
-            self.element.type = config['type']
+        if "type" in config:
+            self.element.type = config["type"]
 
     def _set_html_for(self, config):
-        if 'html_for' in config:
-            self.element.htmlFor = config['html_for']
+        if "html_for" in config:
+            self.element.htmlFor = config["html_for"]
 
     def _set_src(self, config):
-        if 'src' in config:
-            self.element.src = config['src']
+        if "src" in config:
+            self.element.src = config["src"]
+
+    def _set_alt(self, config):
+        if "alt" in config:
+            self.element.alt = config["alt"]
 
     def _set_style_left(self, config):
-        if 'style_left' in config:
-            self.element.style.left = config['style_left']
+        if "style_left" in config:
+            self.element.style.left = f"{100 * float(config["style_left"])}%"
 
     def _set_style_top(self, config):
-        if 'style_top' in config:
-            self.element.style.top = config['style_top']
+        if "style_top" in config:
+            self.element.style.top = f"{100 * float(config["style_top"])}%"
 
-    # def _set_py_click(self, config):
-    #     if 'py_click' in config:
-    #         self.element.setAttribute('py-click', config['py_click'])
+    def _set_hidden(self, config):
+        if "hidden" in config:
+            self.element.hidden = bool(config["hidden"])
+
+    def _set_controls(self, config):
+        if "controls" in config:
+            self.element.controls = bool(config["controls"])
+
+    def _set_width(self, config):
+        if config.get("width"):
+            self.element.width = config["width"]
+
+    def _set_height(self, config):
+        if config.get("height"):
+            self.element.height = config["height"]
+
+    def _set_autoplay(self, config):
+        if "autoplay" in config:
+            self.element.autoplay = bool(config["autoplay"])
+
+    def _set_muted(self, config):
+        if "muted" in config:
+            self.element.muted = bool(config["muted"])
+
+    def _set_script(self, config):
+        if "script" in config:
+            self.element.innerHTML = config["script"]
+
+    def _set_event(self, config):
+        print(config)
+        if "event" in config:
+            events.set_event(
+                self.element,
+                events.registry.get(config["event"]),
+                config["element_id"] if config.get("element_id") else self.element.id,
+            )

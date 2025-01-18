@@ -26,6 +26,11 @@ position: absolute;
 user-select: none;
 }
 
+.rotate-video {
+position: absolute;
+transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
 .menu_item {
 width: 5vw;
 height: 5vw;
