@@ -31,20 +31,3 @@ def create_brewing():
             brewing_tab.element,
             element,
         )
-
-    HTML(
-        "script",
-        brewing_tab.element,
-        {
-            "script": """if (flvjs.isSupported()) {
-            var videoElement = document.getElementById('mlt_sightglass_video');
-            var flvPlayer = flvjs.createPlayer({
-                type: 'flv',
-                url: 'https://hajle-silesia.online/live/livestream.flv'
-            });
-            flvPlayer.attachMediaElement(videoElement);
-            flvPlayer.load();
-            flvPlayer.play();
-        }""",
-        },
-    )
