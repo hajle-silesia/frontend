@@ -40,7 +40,7 @@ def create_brewing():
             var videoElement = document.getElementById('mlt_sightglass_video');
             var flvPlayer = flvjs.createPlayer({
                 type: 'flv',
-                url: 'https://hajle-silesia.online/api/video-stream'
+                url: 'https://hajle-silesia.online/live/livestream.flv'
             });
             flvPlayer.attachMediaElement(videoElement);
             flvPlayer.load();
