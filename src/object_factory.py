@@ -104,7 +104,13 @@ class HTML:
 
     def _set_script(self, config):
         if "script" in config:
-            self.element.innerHTML = config["script"]
+            with open(config["script"], encoding="utf-8") as script:
+                content = script.read()
+            content = content.format(
+                element_id=config["element_id"],
+                base_url=js.window.location.href,
+            )
+            self.element.innerHTML = content
 
     def _set_event(self, config):
         print(config)

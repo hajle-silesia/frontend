@@ -9,3 +9,4 @@ packages = []
 "./recipe.py" = ""
 "./brewing.py" = ""
 "./pythonapi.py" = ""
+"./scripts/video-streaming.js" = "./scripts/video-streaming.js"
