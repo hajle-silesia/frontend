@@ -1,5 +1,5 @@
-import js
 import asyncio
+import js
 
 from brewing import create_brewing
 from menu import create_menu
@@ -13,6 +13,7 @@ async def main():
     await create_recipe()
     create_brewing()
 
+    js.document.getElementById("start").click()
 
-if __name__ == "__main__":
-    asyncio.gather(main())
+
+asyncio.ensure_future(main())

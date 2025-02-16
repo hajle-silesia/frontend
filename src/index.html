@@ -6,10 +6,43 @@
         <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.2/core.css">
         <script type="module" src="https://pyscript.net/releases/2024.10.2/core.js"></script>
         <script src="https://cdn.bootcdn.net/ajax/libs/flv.js/1.6.0/flv.min.js"></script>
+        <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
         <link rel="stylesheet" href="./styles.css" />
         <link rel="icon" href="./img/icon.png" />
     </head>
     <body>
+        <div hidden id="start"></div>
         <script type="py" src="./main.py" config="./pyscript.toml"></script>
+        <script type="text/javascript">
+            document.getElementById("start").onclick = main;
+
+            async function main() {
+                const brokerUrl = `ws://iot.${window.location.hostname}:8083/mqtt`;
+                const client = mqtt.connect(brokerUrl);
+
+                client.on("connect", function () {
+                    console.log("Connected to broker");
+
+                    const elements = document.querySelectorAll('[id^="temperature/"]');
+                    console.log("Found elements:", elements);
+
+                    elements.forEach(element => {
+                        client.subscribe(element.id, function (err) {
+                            if (!err) {
+                                console.log(`Subscribed to ${element.id}`);
+                            }
+                        });
+                    });
+                });
+
+                client.on("message", function (topic, message) {
+                    const msg = message.toString();
+                    let label = document.getElementById(`${topic}`);
+                    if (label !== null) {
+                        label.textContent = `${msg}°C`;
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
