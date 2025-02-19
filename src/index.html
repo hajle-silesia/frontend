@@ -17,7 +17,7 @@
             document.getElementById("start").onclick = main;
 
             async function main() {
-                const brokerUrl = `wss://iot.${window.location.hostname}:8084/mqtt`;
+                const brokerUrl = `wss://${window.location.hostname}:8084/mqtt`;
                 const client = mqtt.connect(brokerUrl);
 
                 client.on("connect", function () {
