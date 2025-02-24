@@ -1,5 +1,4 @@
 import js
-import events
 
 
 class HTML:
@@ -13,7 +12,7 @@ class HTML:
 
     def _append_element_to_parent(self, parent):
         if parent:
-            parent.appendChild(self.element)
+            js.document.getElementById(parent).appendChild(self.element)
         else:
             js.document.body.appendChild(self.element)
 
@@ -36,7 +35,7 @@ class HTML:
             self._set_autoplay(config)
             self._set_muted(config)
             self._set_script(config)
-            self._set_event(config)
+            self._set_listener(config)
 
     def _set_id(self, config):
         if "id" in config:
@@ -80,7 +79,8 @@ class HTML:
 
     def _set_hidden(self, config):
         if "hidden" in config:
-            self.element.hidden = bool(config["hidden"])
+            if config["hidden"].casefold() == "true":
+                self.element.hidden = True
 
     def _set_controls(self, config):
         if "controls" in config:
@@ -112,11 +112,14 @@ class HTML:
             )
             self.element.innerHTML = content
 
-    def _set_event(self, config):
+    def _set_listener(self, config):
+        import listeners
+
         print(config)
-        if "event" in config:
-            events.set_event(
+        if "listener" in config:
+            listeners.set_listener(
                 self.element,
-                events.registry.get(config["event"]),
+                config["event"] if config.get("event") else "click",
+                listeners.registry.get(config["listener"]),
                 config["element_id"] if config.get("element_id") else self.element.id,
             )

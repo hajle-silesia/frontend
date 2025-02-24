@@ -1,19 +1,28 @@
 import asyncio
 import js
 
-from brewing import create_brewing
 from menu import create_menu
-from recipe import create_recipe
-from fermentation import create_fermentation
+from canvas import create_canvas
+import listeners
+from object_factory import HTML
 
 
 async def main():
     js.document.title = "Hajle Silesia Homebrewing System"
 
-    create_menu()
-    await create_recipe()
-    create_brewing()
-    create_fermentation()
+    HTML("div", None, {"id": "menu_container", "class": "menu"})
+    tabs = [
+        "recipe",
+        "brewing",
+        # "calibration",
+        "ferm",
+        # "analysis",
+    ]
+    for tab in tabs:
+        create_menu(tab)
+        create_canvas(tab)
+
+    await listeners.show_last_file_content()
 
     js.document.getElementById("start").click()
 
