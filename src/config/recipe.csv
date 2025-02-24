@@ -1,0 +1,5 @@
+id                 ; parent          ; class ; tag  ; listener                        ; event ; hidden; type; html_for     ; inner_html     ;
+recipe             ;                 ; canvas; div  ;                                 ;       ; False ;     ;              ;                ;
+upload_container   ; recipe          ;       ; div  ; upload_file_and_show_its_content; change;       ;     ;              ;                ;
+recipe_upload      ; upload_container;       ; input;                                 ;       ;       ; file;              ;                ;
+label_recipe_upload; upload_container;       ; label;                                 ;       ;       ; file; recipe_upload; Upload recipe ↑;
