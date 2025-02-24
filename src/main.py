@@ -1,9 +1,10 @@
 import asyncio
+
 import js
 
-from menu import create_menu
-from canvas import create_canvas
 import listeners
+from canvas import create_canvas
+from menu import create_menu
 from object_factory import HTML
 
 

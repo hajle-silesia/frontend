@@ -1,4 +1,10 @@
-packages = []
+packages = [
+    "anyio==4.8.0",
+    # Required by anyio, unvendored by default.
+    # Sources:
+    # https://pyodide.org/en/stable/usage/wasm-constraints.html#optional-modules
+    "ssl",
+]
 [files]
 "./object_factory.py" = ""
 "./container.py" = ""
