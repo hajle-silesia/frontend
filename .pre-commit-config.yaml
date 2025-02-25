@@ -8,7 +8,6 @@ repos:
       # Keep the order: linter, formatter, as linter fixes may require code reformatting.
       # Source: https://docs.astral.sh/ruff/integrations/#pre-commit
       - id: ruff
-        args: [--fix]
         stages:
           - manual
           - pre-commit

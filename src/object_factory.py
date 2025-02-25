@@ -1,3 +1,5 @@
+import pathlib
+
 import js
 
 
@@ -78,9 +80,8 @@ class HTML:
             self.element.style.top = f"{100 * float(config["style_top"])}%"
 
     def _set_hidden(self, config):
-        if "hidden" in config:
-            if config["hidden"].casefold() == "true":
-                self.element.hidden = True
+        if "hidden" in config and config["hidden"].casefold() == "true":
+            self.element.hidden = True
 
     def _set_controls(self, config):
         if "controls" in config:
@@ -104,7 +105,7 @@ class HTML:
 
     def _set_script(self, config):
         if "script" in config:
-            with open(config["script"], encoding="utf-8") as script:
+            with pathlib.Path(config["script"]).open(encoding="utf-8") as script:
                 content = script.read()
             content = content.format(
                 element_id=config["element_id"],
@@ -115,7 +116,6 @@ class HTML:
     def _set_listener(self, config):
         import listeners
 
-        print(config)
         if "listener" in config:
             listeners.set_listener(
                 self.element,

@@ -10,7 +10,7 @@ class Container(HTML):
         self.name = config["name"]
 
     def update_content(self, content=None):
-        if self.name in content and content[self.name]:
+        if content.get(self.name):
             header = self._get_headers(content[self.name])
 
             t = HTML("table", self._parent.element, {"class": "inner"})
@@ -45,7 +45,7 @@ class RecordsContainer(Container):
 
 
 class ParametersContainer(Container):
-    def _get_headers(self, content):
+    def _get_headers(self, _content):
         return ["NAME", "VALUE"]
 
     def _add_content_to_table(self, content, t):
