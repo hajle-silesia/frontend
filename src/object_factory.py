@@ -73,11 +73,11 @@ class HTML:
 
     def _set_style_left(self, config):
         if "style_left" in config:
-            self.element.style.left = f"{100 * float(config["style_left"])}%"
+            self.element.style.left = f"{100 * float(config['style_left'])}%"
 
     def _set_style_top(self, config):
         if "style_top" in config:
-            self.element.style.top = f"{100 * float(config["style_top"])}%"
+            self.element.style.top = f"{100 * float(config['style_top'])}%"
 
     def _set_hidden(self, config):
         if "hidden" in config and config["hidden"].casefold() == "true":
