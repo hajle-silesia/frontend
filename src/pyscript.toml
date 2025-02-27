@@ -17,4 +17,5 @@ packages = [
 "./menu.py" = ""
 "./canvas.py" = ""
 "./pythonapi.py" = ""
+"./config.json" = ""
 "./scripts/video-streaming.js" = "./scripts/video-streaming.js"
