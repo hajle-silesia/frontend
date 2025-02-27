@@ -16,15 +16,27 @@
         <script type="text/javascript">
             document.getElementById("start").onclick = main;
 
+            fetch('config.json')
+                .then(response => response.json())
+                .then(config => {
+                    for (let key in config) {
+                        localStorage.setItem(key, config[key]);
+                    }
+                    console.log("Environment variables loaded to LocalStorage.");
+                })
+                .catch(error => console.error('Error loading config.json:', error));
+
             async function main() {
-                const brokerUrl = `wss://${window.location.hostname}:8084/mqtt`;
+                const brokerUrl = `wss://${localStorage.getItem('BASE_URL') ?? window.location.hostname}:8084/mqtt`;
                 const client = mqtt.connect(brokerUrl);
 
                 client.on("connect", function () {
                     console.log("Connected to broker");
 
-                    const elements = document.querySelectorAll('[id^="temperature/"]');
-                    console.log("Found elements:", elements);
+                    const elements = document.querySelectorAll(`
+                        [id^="temperature/"],
+                        [id^="ispindel/"]
+                    `);
 
                     elements.forEach(element => {
                         client.subscribe(element.id, function (err) {
