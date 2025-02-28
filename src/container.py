@@ -13,14 +13,14 @@ class Container(HTML):
         if content.get(self.name):
             header = self._get_headers(content[self.name])
 
-            t = HTML("table", self._parent.element, {"class": "inner"})
+            HTML("table", self._parent, {"id": self.name, "class": "inner"})
 
-            row = HTML("tr", t.element)
-            for col in header:
-                HTML("th", row.element, {"inner_html": col})
+            HTML("tr", self.name, {"id": f"{self.name}_headers"})
+            for column in header:
+                HTML("th", f"{self.name}_headers", {"inner_html": column})
 
             if content is not None:
-                self._add_content_to_table(content, t)
+                self._add_content_to_table(content, self.name)
 
             return self
 
@@ -29,7 +29,7 @@ class Container(HTML):
         pass
 
     @abc.abstractmethod
-    def _add_content_to_table(self, content, t):
+    def _add_content_to_table(self, content, table):
         pass
 
 
@@ -37,19 +37,19 @@ class RecordsContainer(Container):
     def _get_headers(self, content):
         return content[0]
 
-    def _add_content_to_table(self, content, t):
-        for entry in content[self.name]:
-            row = HTML("tr", t.element)
-            for table_col in entry.values():
-                HTML("td", row.element, {"inner_html": table_col})
+    def _add_content_to_table(self, content, table):
+        for i, entry in enumerate(content[self.name]):
+            HTML("tr", table, {"id": f"{self.name}_{i}"})
+            for column_value in entry.values():
+                HTML("td", f"{self.name}_{i}", {"inner_html": column_value})
 
 
 class ParametersContainer(Container):
     def _get_headers(self, _content):
         return ["NAME", "VALUE"]
 
-    def _add_content_to_table(self, content, t):
+    def _add_content_to_table(self, content, table):
         for k, v in content[self.name].items():
-            row = HTML("tr", t.element)
-            HTML("td", row.element, {"inner_html": k})
-            HTML("td", row.element, {"inner_html": v})
+            HTML("tr", table, {"id": f"{self.name}_{k}"})
+            HTML("td", f"{self.name}_{k}", {"inner_html": k})
+            HTML("td", f"{self.name}_{k}", {"inner_html": v})

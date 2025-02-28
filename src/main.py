@@ -11,7 +11,7 @@ from object_factory import HTML
 async def main():
     js.document.title = "Hajle Silesia Homebrewing System"
 
-    HTML("div", None, {"id": "menu_container", "class": "menu"})
+    HTML("div", None, {"id": "menu", "class": "menu"})
     tabs = [
         "recipe",
         "brewing",
