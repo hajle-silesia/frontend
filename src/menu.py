@@ -4,7 +4,7 @@ from object_factory import HTML
 def create_menu(tab):
     HTML(
         "div",
-        "menu_container",
+        "menu",
         {
             "id": f"{tab}_menu_item",
             "class": "menu_item",

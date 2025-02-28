@@ -1,7 +1,7 @@
 import asyncio
 import json
+import pathlib
 
-import anyio
 import js
 import pyodide.ffi.wrappers
 
@@ -78,44 +78,46 @@ async def show_last_file_content():
         if recipe_table:
             recipe_table.remove()
 
-        recipe_tab = js.document.getElementById("recipe")
+        HTML("div", "recipe", {"id": "recipe_table_container"})
+        HTML("table", "recipe_table_container", {"id": "recipe_table", "class": "outer"})
 
-        recipe_table = HTML("div", recipe_tab, {"id": "recipe_table"})
-        table = HTML("table", recipe_table.element, {"class": "outer"})
+        HTML("tr", "recipe_table", {"id": "miscs_fermentables_parameters_headers"})
+        HTML("th", "miscs_fermentables_parameters_headers", {"inner_html": "Miscs"})
+        HTML("th", "miscs_fermentables_parameters_headers", {"inner_html": "Fermentables"})
+        HTML("th", "miscs_fermentables_parameters_headers", {"inner_html": "Parameters"})
 
-        row = HTML("tr", table.element)
-        HTML("th", row.element, {"inner_html": "Miscs"})
-        HTML("th", row.element, {"inner_html": "Fermentables"})
-        HTML("th", row.element, {"inner_html": "Parameters"})
+        HTML("tr", "recipe_table", {"id": "miscs_fermentables_parameters_values"})
+        HTML("td", "miscs_fermentables_parameters_values", {"id": "miscs_container"})
+        HTML("td", "miscs_fermentables_parameters_values", {"id": "fermentables_container"})
+        HTML(
+            "td",
+            "miscs_fermentables_parameters_values",
+            {"id": "parameters_container", "rowspan": 3},
+        )
 
-        row = HTML("tr", table.element)
-        miscs_container = HTML("td", row.element)
-        fermentables_container = HTML("td", row.element)
-        parameters_container = HTML("td", row.element, {"rowspan": 3})
+        HTML("tr", "recipe_table", {"id": "mash_steps_hops_headers"})
+        HTML("th", "mash_steps_hops_headers", {"inner_html": "Mash steps"})
+        HTML("th", "mash_steps_hops_headers", {"inner_html": "Hops"})
 
-        row = HTML("tr", table.element)
-        HTML("th", row.element, {"inner_html": "Mash steps"})
-        HTML("th", row.element, {"inner_html": "Hops"})
+        HTML("tr", "recipe_table", {"id": "mash_steps_hops_values"})
+        HTML("td", "mash_steps_hops_values", {"id": "mash_steps_container"})
+        HTML("td", "mash_steps_hops_values", {"id": "hops_container"})
 
-        row = HTML("tr", table.element)
-        mash_steps_container = HTML("td", row.element)
-        hops_container = HTML("td", row.element)
+        with pathlib.Path("config/table_config.json").open(encoding="utf-8") as table_config_json:  # noqa: ASYNC230
+            table_config = json.load(table_config_json)
 
-        async with await anyio.open_file("config/table_config.json", encoding="utf-8") as table_config_json:
-            table_config = await json.load(table_config_json)
-
-        miscs = RecordsContainer(miscs_container, table_config["miscs"])
-        fermentables = RecordsContainer(fermentables_container, table_config["fermentables"])
-        parameters = ParametersContainer(parameters_container, table_config["parameters"])
-        mash_steps = RecordsContainer(mash_steps_container, table_config["mash_steps"])
-        hops = RecordsContainer(hops_container, table_config["hops"])
+        miscs_container = RecordsContainer("miscs_container", table_config["miscs"])
+        fermentables_container = RecordsContainer("fermentables_container", table_config["fermentables"])
+        parameters_container = ParametersContainer("parameters_container", table_config["parameters"])
+        mash_steps_container = RecordsContainer("mash_steps_container", table_config["mash_steps"])
+        hops_container = RecordsContainer("hops_container", table_config["hops"])
 
         recipe_tab_containers = [
-            miscs,
-            fermentables,
-            parameters,
-            mash_steps,
-            hops,
+            miscs_container,
+            fermentables_container,
+            parameters_container,
+            mash_steps_container,
+            hops_container,
         ]
 
         for container in recipe_tab_containers:
