@@ -34,7 +34,7 @@
                     console.log("Connected to broker");
 
                     const elements = document.querySelectorAll(`
-                        [id^="temperature/"],
+                        [id^="ds18b20/"],
                         [id^="ispindel/"]
                     `);
 
@@ -49,9 +49,9 @@
 
                 client.on("message", function (topic, message) {
                     const msg = message.toString();
-                    let label = document.getElementById(`${topic}`);
+                    let label = document.getElementById(topic);
                     if (label !== null) {
-                        label.textContent = `${msg}°C`;
+                        label.textContent = `${topic.split("/").pop()}: ${msg}`;
                     }
                 });
             }
