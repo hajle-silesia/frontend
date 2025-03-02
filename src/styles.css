@@ -20,13 +20,18 @@ position: absolute;
 width: 1.5%;
 -webkit-transform: translate(-50%, -50%);
 }
-.sensor {
+.sensor_container {
 position: absolute;
-width: 5%;
+display: inline-flex;
+flex-direction: column;
 background-color: #008CBA;
+-webkit-transform: translate(-50%, -50%);
+}
+.sensor {
+position: relative;
+min-width: max-content;
 color: white;
 text-align: center;
--webkit-transform: translate(-50%, -50%);
 }
 .rotate-video {
 position: absolute;
