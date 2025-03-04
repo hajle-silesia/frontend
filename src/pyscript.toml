@@ -11,7 +11,6 @@ packages = [
 "./listeners.py" = ""
 "./config/brewing.csv" = "./config/brewing.csv"
 "./config/ferm.csv" = "./config/ferm.csv"
-"./config/menu.csv" = "./config/menu.csv"
 "./config/recipe.csv" = "./config/recipe.csv"
 "./config/table_config.json" = "./config/table_config.json"
 "./menu.py" = ""
