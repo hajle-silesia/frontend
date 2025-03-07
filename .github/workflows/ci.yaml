@@ -14,7 +14,7 @@ jobs:
     name: Tests and static analysis
     runs-on: ubuntu-latest
     container:
-      image: hajlesilesia/provisioning:0.42.0
+      image: hajlesilesia/provisioning:0.42.2
 
     steps:
       - name: Checkout
