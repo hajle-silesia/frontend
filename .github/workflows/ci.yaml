@@ -10,31 +10,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  tests-and-static-analysis:
     name: Tests and static analysis
-    runs-on: ubuntu-latest
-    container:
-      image: hajlesilesia/provisioning:0.44.0
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Cache pre-commit
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pre-commit-zipapp
-          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
-      - name: Run tests and static analysis
-        run: |
-          pre-commit run --all-files --hook-stage manual
+    uses: hajle-silesia/.github/.github/workflows/shared-tests-and-static-analysis.yaml@v2.6.1
+    with:
+      python-dependencies: true
 
   image-build:
     needs:
-      - test
+      - tests-and-static-analysis
     name: Image build
     uses: hajle-silesia/.github/.github/workflows/shared-image-build.yaml@v2.5.0
     with:
