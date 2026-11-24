@@ -1,4 +1,4 @@
-FROM nginx:1.31.9
+FROM nginx:1.31.10
 RUN apt update && apt install -y \
         curl
 COPY ./src /usr/share/nginx/html
